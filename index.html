@@ -1,0 +1,173 @@
+<html>
+<head>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Fiestel</title>
+    <style type="text/css">
+
+        body {
+            font-family: sans-serif;
+            font-size: 12pt;
+            color: #525252;
+        }
+
+        input, textarea {
+            width: 100%;
+            border-radius: 3px;
+            border: 1px solid #cecece;
+            padding: 0.4em 0.7em;
+            font-size:10pt;
+        }
+
+        #container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            display: flex;
+            align-items: stretch;
+        }
+            #container-left {
+                flex-grow: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: rgb(255, 244, 239);
+            }
+                #canvas {
+                    background-color: white;
+                    box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.23);
+                    margin: 1em;
+                }
+
+        #container-right {
+            width: 300px;
+            min-width: 300px;
+            padding: 1em;
+            border-left: 1px solid rgba(0, 0, 0, 0.1);
+        }
+            .row {
+                display: flex;
+                align-items: center;
+            }
+            .row:not(:last-child) {
+                margin-bottom: 0.5em;
+            }
+                .row > label {
+                    width: 30%;
+                    font-weight: bold;
+                    font-size: 90%;
+                }
+                .row > .widget {
+                    flex-grow: 1;
+                    display: flex;
+                    align-items: center;
+                }
+                    .row > .widget > .unit {
+                        margin-left: 0.2em;
+                        color: #a3a3a3;
+                        }
+            .round-function textarea {
+                height: 7em;
+            }
+
+    </style>
+</head>
+<body>
+
+    <div id="container">
+
+        <div id="container-left">
+            <canvas id="canvas"></canvas>
+        </div>
+
+        <div id="container-right">
+
+            <h2>Feistel Pixels</h2>
+
+            <p>Configure the height and width of the image, how many positions to sample from our feistel output, and some other feistel network bits and pieces.</p>
+
+            <div class="row">
+                <label for="height">
+                    Height
+                </label>
+                <div class="widget">
+                    <input id="height" type="number"/><div class="unit">px</div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="width">
+                    Width
+                </label>
+                <div class="widget">
+                    <input id="width" type="number"/><div class="unit">px</div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="samples">
+                    Samples
+                </label>
+                <div class="widget">
+                    <input id="samples" type="number"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="rounds">
+                    Rounds
+                </label>
+                <div class="widget">
+                    <input id="rounds" type="number"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="low_bits">
+                    Low Bits
+                </label>
+                <div class="widget">
+                    <input id="low_bits" type="number"/><div class="unit">bits</div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="high_bits">
+                    High Bits
+                </label>
+                <div class="widget">
+                    <input id="high_bits" type="number"/><div class="unit">bits</div>
+                </div>
+            </div>
+
+            <div class="round-function">
+                <h3>Round Function</h3>
+                <p>
+                    This function takes in the left bits and is XOR'd against the current right bits to produce the new left bits.
+                </p>
+                <div class="widget">
+                    <textarea id="function"></textarea>
+                </div>
+            </div>
+
+            <div class="about">
+                <h3>About</h3>
+                <p>
+                    A Feistel cipher provides a one-to-one mapping from some input range to some output range. With the right settings, the output
+                    values given back can appear to be random. This page takes a number of samples (starting from input = 0 and working up) and
+                    plots them as black pixels onto a canvas, so that we can get a feel for the level of randomness for different settings.
+                </p>
+                <p>
+                    <a href="">View source on Github</a>
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="index.js"></script>
+
+</body>
+</html>
