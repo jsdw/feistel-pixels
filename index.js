@@ -59,7 +59,7 @@ function refresh(){
 // function wires this all up.
 const inputBindings = {
     width: {
-        initialValue: 400,
+        initialValue: 700,
         onUpdate: (el) => {
             canvasEl.width = parseInt(el.value, 10);
             inputBindings.low_bits.onUpdate();
@@ -67,7 +67,7 @@ const inputBindings = {
         }
     },
     height: {
-        initialValue: 300,
+        initialValue: 500,
         onUpdate: (el) => {
             canvasEl.height = parseInt(el.value, 10);
             inputBindings.low_bits.onUpdate();
@@ -98,7 +98,7 @@ const inputBindings = {
         }
     },
     low_bits: {
-        initialValue: 8,
+        initialValue: 10,
         onUpdate: (el) => {
             const maxBits = Math.max(Math.ceil(Math.log2(canvasEl.height * canvasEl.width)), 1);
             numLowBits = Math.max(1, Math.min(maxBits-1, parseInt(el.value, 10)));
